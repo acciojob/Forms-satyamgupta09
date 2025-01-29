@@ -1,24 +1,24 @@
-// <p>Now I can render any React component on any DOM node I want using ReactDOM.render</p>
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Form from "./Form";
-import FormRef from "./FormRef";
-import FormState from "./FormState";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Form from './Form';
+import FormRef from './FormRef';
+import FormState from './FormState';
+import Card from './Card';
 
-export default function App() {
+function App() {
   return (
-    <div>
-      <h1>Forms</h1>
-      <Router>
-        <div>
-          <Routes>
-            <Route path="/" element={<Form />} />
-            <Route path="/ref" element={<FormRef />} />
-            <Route path="/state" element={<FormState />} />
-          </Routes>
-        </div>
-      </Router>
-    </div>
+    <Router>
+      <nav style={{ padding: '10px' }}>
+        <Link to="/" id="form-link" style={{ margin: '0 10px' }}>Form</Link>
+        <Link to="/form-ref" id="form-ref-link" style={{ margin: '0 10px' }}>Form Ref</Link>
+        <Link to="/form-state" id="form-state-link" style={{ margin: '0 10px' }}>Form State</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Card><Form /></Card>} />
+        <Route path="/form-ref" element={<Card><FormRef /></Card>} />
+        <Route path="/form-state" element={<Card><FormState /></Card>} />
+      </Routes>
+    </Router>
   );
 }
 
+export default App;
